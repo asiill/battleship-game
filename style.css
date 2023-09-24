@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+:root {
+    /* base font family */
+    --ff-base: "Roboto", sans-serif;
+
+    /* base font size */
+    --fs-base: 14px;
+
+    /* base padding */
+    --padding-base: 16px;
+    --padding-btn: 8px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+
+}
+
+#content {
+    margin: 40px auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#info-container {
+    background-color: beige;
+    width: 500px;
+    padding: var(--padding-base);
+
+    display: flex;
+    justify-content: center;
+}
+
+#info {
+    font-size: var(--fs-base);
+    font-family: var(--ff-base);
+}
+
+#gameboard-container {
+    display: flex;
+    gap: 20px;
+}
+
+.gameboard {
+    width: 240px;
+    height: 240px;
+
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#player {
+    background-color: rosybrown;
+}
+
+#opponent {
+    background-color: lightgreen;
+}
+
+.cell {
+    width: 24px;
+    height: 24px;
+    border: solid 1px black;
+}
+
+#button-container {
+    display: flex;
+    gap: 10px;
+}
+
+#button-container>button {
+    font-size: var(--fs-base);
+    font-family: var(--ff-base);
+    padding: var(--padding-btn);
+}
+
+.destroyer {
+    background-color: yellow;
+}
+
+.submarine {
+    background-color: red;
+}
+
+.cruiser {
+    background-color: green;
+}
+
+.battleship {
+    background-color: purple;
+}
+
+.carrier {
+    background-color: blue;
+}
