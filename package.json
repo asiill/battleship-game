@@ -1,0 +1,19 @@
+{
+  "name": "battleship-game",
+  "version": "1.0.0",
+  "description": "A Javascript implementation of the game [Battleship](https://en.wikipedia.org/wiki/Battleship_(game))",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.22.20",
+    "@babel/preset-env": "^7.22.20",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
+  }
+}
