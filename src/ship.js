@@ -4,11 +4,11 @@ export const Ship = (length) => {
 
     const getLength = () => {
         return shipLength;
-    }
+    };
 
     const hit = () => {
         shipHits++;
-    }
+    };
 
     const getHits = () => {
         return shipHits;
@@ -20,7 +20,7 @@ export const Ship = (length) => {
 
     const reset = () => {
         shipHits = 0;
-    }
+    };
 
     return { getLength, hit, getHits, isSunk, reset };
 };
