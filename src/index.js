@@ -1,11 +1,9 @@
+import { Player } from "./player.js";
+
 /* --- Get DOM elements --- */
 
 const info = document.getElementById("info");
-
 const gameboards = document.querySelectorAll(".gameboard");
-const playerBoard = document.getElementById("player");
-const opponentBoard = document.getElementById("opponent");
-
 const startBtn = document.getElementById("start");
 
 /* --- Create a nxn grid within each gameboard --- */
@@ -20,14 +18,38 @@ const createGameboard = (board) => {
     }
 };
 
-gameboards.forEach(board => {
+gameboards.forEach((board) => {
     createGameboard(board);
 });
 
 /* --- Start a game when the startBtn element is clicked --- */
 
 const startGame = () => {
-    console.log("start");
+    let playerCells = document.querySelectorAll("#player .cell");
+    let opponentCells = document.querySelectorAll("#opponent .cell");
+
+    let player = Player("player", n);
+    let computer = Player("computer", n);
+
+    player.initializeGameboard();
+    computer.initializeGameboard();
+
+    let playerBoard = player.getGameboard().getBoard();
+    let computerBoard = computer.getGameboard().getBoard();
+
+    for (let i = 0; i < n; i++) {
+        let row = playerBoard[i];
+        for (let j = 0; j < n; j++) {
+            let cell = row[j];
+            let index;
+            if (i === 0) {
+                index = j;
+            } else {
+                index = Number(i.toString() + j.toString());
+            }
+            playerCells[index].textContent = cell;
+        }
+    }
 }
 
 startBtn.addEventListener("click", startGame);
