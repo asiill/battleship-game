@@ -13,9 +13,9 @@ export const Player = (name, size) => {
         return gameboard;
     };
 
-    const createGameboard = () => {
+    const initializeGameboard = () => {
         gameboard.initializeBoard();
     };
 
-    return { getName, getGameboard, createGameboard };
+    return { getName, getGameboard, initializeGameboard };
 };
