@@ -70,6 +70,7 @@ body {
     width: 24px;
     height: 24px;
     border: solid 1px black;
+    text-align: center;
 }
 
 #button-container {
