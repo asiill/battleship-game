@@ -25,7 +25,7 @@ export const Gameboard = (size) => {
         // else if direction is vertical
         else {
             for (let i = 0; i < length; i++) {
-                if ((y + i) > 0) {
+                if ((y + i) > 9) {
                     return false;
                 }
             }
