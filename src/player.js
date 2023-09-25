@@ -7,11 +7,11 @@ export const Player = (name, size) => {
 
     const getName = () => {
         return playerName;
-    }
+    };
 
     const getGameboard = () => {
         return gameboard;
-    }
+    };
 
     const createGameboard = () => {
         gameboard.initializeBoard();
