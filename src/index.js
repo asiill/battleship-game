@@ -22,6 +22,24 @@ gameboards.forEach((board) => {
     createGameboard(board);
 });
 
+/* --- Update the text content of a gameboard's cells using the relevant board array --- */
+
+const updateGameboard = (screenCells, board) => {
+    for (let i = 0; i < n; i++) {
+        let row = board[i];
+        for (let j = 0; j < n; j++) {
+            let content = row[j];
+            let index;
+            if (i === 0) {
+                index = j;
+            } else {
+                index = Number(i.toString() + j.toString());
+            }
+            screenCells[index].textContent = content;
+        }
+    }
+}
+
 /* --- Start a game when the startBtn element is clicked --- */
 
 const startGame = () => {
@@ -29,27 +47,16 @@ const startGame = () => {
     let opponentCells = document.querySelectorAll("#opponent .cell");
 
     let player = Player("player", n);
-    let computer = Player("computer", n);
+    let opponent = Player("opponent", n);
 
     player.initializeGameboard();
-    computer.initializeGameboard();
+    opponent.initializeGameboard();
 
     let playerBoard = player.getGameboard().getBoard();
-    let computerBoard = computer.getGameboard().getBoard();
+    let opponentBoard = opponent.getGameboard().getBoard();
 
-    for (let i = 0; i < n; i++) {
-        let row = playerBoard[i];
-        for (let j = 0; j < n; j++) {
-            let cell = row[j];
-            let index;
-            if (i === 0) {
-                index = j;
-            } else {
-                index = Number(i.toString() + j.toString());
-            }
-            playerCells[index].textContent = cell;
-        }
-    }
+    updateGameboard(playerCells, playerBoard);
+    updateGameboard(opponentCells, opponentBoard);
 }
 
 startBtn.addEventListener("click", startGame);
