@@ -3,7 +3,7 @@ import { Ship } from "./ship.js";
 export const Gameboard = (size) => {
     let n = size;
     let board = Array(n).fill(null).map(() => Array(n).fill(null));
-    let ships = [Ship(5), Ship(4), Ship(3), Ship(3), Ship(2)];
+    let ships = [Ship(5, "carrier"), Ship(4, "battleship"), Ship(3, "cruiser"), Ship(3, "submarine"), Ship(2, "destroyer")];
 
     const getBoard = () => {
         return board;
