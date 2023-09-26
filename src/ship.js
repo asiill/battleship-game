@@ -1,10 +1,15 @@
-export const Ship = (length) => {
+export const Ship = (length, name) => {
     let shipHits = 0;
     let shipLength = length;
+    let shipName = name;
 
     const getLength = () => {
         return shipLength;
     };
+
+    const getName = () => {
+        return shipName;
+    }
 
     const hit = () => {
         shipHits++;
@@ -22,5 +27,5 @@ export const Ship = (length) => {
         shipHits = 0;
     };
 
-    return { getLength, hit, getHits, isSunk, reset };
+    return { getLength, getName, hit, getHits, isSunk, reset };
 };
