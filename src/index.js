@@ -35,14 +35,30 @@ const updateGameboard = (screenCells, board) => {
             } else {
                 index = Number(i.toString() + j.toString());
             }
-            screenCells[index].textContent = content;
+            
+            if (content === null) {
+                continue;
+            }
+
+            screenCells[index].classList.add("active");
         }
     }
 }
 
+const resetGameboards = () => {
+    let cells = document.querySelectorAll(".cell");
+    cells.forEach((cell) => {
+        if (cell.classList.contains("active")) {
+            cell.classList.remove("active");
+        }
+    });
+};
+
 /* --- Start a game when the startBtn element is clicked --- */
 
 const startGame = () => {
+    resetGameboards();
+
     let playerCells = document.querySelectorAll("#player .cell");
     let opponentCells = document.querySelectorAll("#opponent .cell");
 
