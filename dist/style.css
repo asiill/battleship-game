@@ -58,19 +58,14 @@ body {
     flex-wrap: wrap;
 }
 
-#player {
-    background-color: rosybrown;
-}
-
-#opponent {
-    background-color: lightgreen;
-}
-
 .cell {
     width: 24px;
     height: 24px;
     border: solid 1px black;
-    text-align: center;
+}
+
+.active {
+    background-color: blue;
 }
 
 #button-container {
@@ -82,24 +77,4 @@ body {
     font-size: var(--fs-base);
     font-family: var(--ff-base);
     padding: var(--padding-btn);
-}
-
-.destroyer {
-    background-color: yellow;
-}
-
-.submarine {
-    background-color: red;
-}
-
-.cruiser {
-    background-color: green;
-}
-
-.battleship {
-    background-color: purple;
-}
-
-.carrier {
-    background-color: blue;
 }
