@@ -24,10 +24,10 @@ gameboards.forEach((board) => {
 
 /* --- Update the text content of a gameboard's cells using the relevant board array --- */
 
-const updateGameboard = (screenCells, Gameboard) => {
-    let board = Gameboard.getBoard();
-    let hits = Gameboard.getHits();
-    let misses = Gameboard.getMisses();
+const updateGameboard = (screenCells, gameboard) => {
+    let board = gameboard.getBoard();
+    let hits = gameboard.getHits();
+    let misses = gameboard.getMisses();
 
     for (let i = 0; i < n; i++) {
         let rowB = board[i];
@@ -63,9 +63,18 @@ const updateGameboard = (screenCells, Gameboard) => {
 
 const playRound = (cell, opponentGameboard, opponent, playerGameboard, player) => {
     let index = cell.id;
-    let coord = index.split("");
-    let x = Number(coord[0]);
-    let y = Number(coord[1]);
+    let x;
+    let y;
+
+    // >= 0 index <= 9
+    if (index.length === 1) {
+        x = 0;
+        y = Number(index);
+    } else {
+        let coord = index.split("");
+        x = Number(coord[0]);
+        y = Number(coord[1]);
+    }
 
     player.attack(x, y, opponentGameboard);
     opponent.randomAttack(playerGameboard);
