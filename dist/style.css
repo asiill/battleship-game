@@ -68,6 +68,14 @@ body {
     background-color: blue;
 }
 
+.miss::before {
+    content: "\2022";
+}
+
+.hit {
+    background-color: red;
+}
+
 #button-container {
     display: flex;
     gap: 10px;
