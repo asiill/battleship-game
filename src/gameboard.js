@@ -71,13 +71,13 @@ export const Gameboard = (size) => {
         // if direction is horizontal
         if (direction === 1) {
             for (let i = 0; i < length; i++) {
-                board[x + i][y] = "x";
+                board[x + i][y] = ship;
             }
         }
         // else if direction is vertical
         else {
             for (let i = 0; i < length; i++) {
-                board[x][y + i] = "x";
+                board[x][y + i] = ship;
             }
         }
         return true;
