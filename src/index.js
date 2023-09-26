@@ -11,7 +11,7 @@ const startBtn = document.getElementById("start");
 let n = 10;
 const createGameboard = (board) => {
     for (let i = 0; i < n * n; i++) {
-        let cell = document.createElement("div");
+        let cell = document.createElement("button");
         cell.id = i;
         cell.classList.add("cell");
         board.appendChild(cell);
@@ -24,11 +24,20 @@ gameboards.forEach((board) => {
 
 /* --- Update the text content of a gameboard's cells using the relevant board array --- */
 
-const updateGameboard = (screenCells, board) => {
+const updateGameboard = (screenCells, Gameboard) => {
+    let board = Gameboard.getBoard();
+    let hits = Gameboard.getHits();
+    let misses = Gameboard.getMisses();
+
     for (let i = 0; i < n; i++) {
-        let row = board[i];
+        let rowB = board[i];
+        let rowH = hits[i];
+        let rowM = misses[i];
         for (let j = 0; j < n; j++) {
-            let content = row[j];
+            let content = rowB[j];
+            let hit = rowH[j];
+            let miss = rowM[j];
+
             let index;
             if (i === 0) {
                 index = j;
@@ -36,20 +45,45 @@ const updateGameboard = (screenCells, board) => {
                 index = Number(i.toString() + j.toString());
             }
             
-            if (content === null) {
-                continue;
+            if (hit === true) {
+                screenCells[index].classList.add("hit");
+            }
+            if (miss === true) {
+                screenCells[index].classList.add("miss");
+            }
+            if (content !== null) {
+                screenCells[index].classList.add("active");
             }
 
-            screenCells[index].classList.add("active");
         }
     }
 }
+
+/* --- Play game round --- */
+
+const playRound = (cell, opponentGameboard, opponent, playerGameboard, player) => {
+    let index = cell.id;
+    let coord = index.split("");
+    let x = Number(coord[0]);
+    let y = Number(coord[1]);
+
+    player.attack(x, y, opponentGameboard);
+    opponent.randomAttack(playerGameboard);
+}
+
+/* Reset the player and opponent gameboards */
 
 const resetGameboards = () => {
     let cells = document.querySelectorAll(".cell");
     cells.forEach((cell) => {
         if (cell.classList.contains("active")) {
             cell.classList.remove("active");
+        }
+        if (cell.classList.contains("hit")) {
+            cell.classList.remove("hit");
+        }
+        if (cell.classList.contains("miss")) {
+            cell.classList.remove("miss");
         }
     });
 };
@@ -68,11 +102,19 @@ const startGame = () => {
     player.initializeGameboard();
     opponent.initializeGameboard();
 
-    let playerBoard = player.getGameboard().getBoard();
-    let opponentBoard = opponent.getGameboard().getBoard();
+    let playerGameboard = player.getGameboard();
+    let opponentGameboard = opponent.getGameboard();
 
-    updateGameboard(playerCells, playerBoard);
-    updateGameboard(opponentCells, opponentBoard);
+    updateGameboard(playerCells, playerGameboard);
+    updateGameboard(opponentCells, opponentGameboard);
+
+    opponentCells.forEach((cell) => {
+        cell.addEventListener("click", () => {
+            playRound(cell, opponentGameboard, opponent, playerGameboard, player);
+            updateGameboard(playerCells, playerGameboard);
+            updateGameboard(opponentCells, opponentGameboard);
+        });
+    });
 }
 
 startBtn.addEventListener("click", startGame);
