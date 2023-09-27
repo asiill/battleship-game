@@ -14,6 +14,10 @@ export const Player = (name, size) => {
         return gameboard;
     };
 
+    const getAttacks = () => {
+        return attacks;
+    };
+
     const initializeGameboard = () => {
         gameboard.initializeBoard();
     };
@@ -25,7 +29,7 @@ export const Player = (name, size) => {
             }
         }
         return false;
-    }
+    };
 
     const attack = (x, y, board) => {
         if (hasAttacked(x, y)) {
@@ -33,13 +37,13 @@ export const Player = (name, size) => {
         }
         attacks.push([x, y]);
         board.receiveAttack(x, y);
-    }
+    };
 
     const randomAttack = (board) => {
         let x = Math.floor(Math.random() * 10);
         let y = Math.floor(Math.random() * 10);
         attack(x, y, board);
-    }
+    };
 
-    return { getName, getGameboard, initializeGameboard, attack, randomAttack};
+    return { getName, getGameboard, getAttacks, initializeGameboard, attack, randomAttack };
 };
