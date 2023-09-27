@@ -13,19 +13,10 @@ export const Gameboard = (size) => {
 
     const getHits = () => {
         return hits;
-    }
+    };
 
     const getMisses = () => {
         return misses;
-    }
-
-    const reset = () => {
-        board = Array(n).fill(null).map(() => Array(n).fill(null));
-        hits = Array(n).fill(false).map(() => Array(n).fill(false));
-        misses = Array(n).fill(false).map(() => Array(n).fill(false));
-        for (let i = 0; i < ships.length; i++) {
-            ships[i].reset();
-        }
     };
 
     const isValidPosition = (length, direction, x, y) => {
@@ -135,9 +126,14 @@ export const Gameboard = (size) => {
         return true;
     };
 
-    const isGameOver = () => {
-        return allSunk();
+    const reset = () => {
+        board = Array(n).fill(null).map(() => Array(n).fill(null));
+        hits = Array(n).fill(false).map(() => Array(n).fill(false));
+        misses = Array(n).fill(false).map(() => Array(n).fill(false));
+        for (let i = 0; i < ships.length; i++) {
+            ships[i].reset();
+        }
     };
 
-    return { getBoard, getHits, getMisses, initializeBoard, receiveAttack, isGameOver };
+    return { getBoard, getHits, getMisses, initializeBoard, receiveAttack, reset };
 };
