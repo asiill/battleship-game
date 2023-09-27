@@ -22,7 +22,7 @@ gameboards.forEach((board) => {
     createGameboard(board);
 });
 
-/* --- Update the text content of a gameboard's cells using the relevant board array --- */
+/* --- Update the style of a gameboard's cells using the relevant gameboard object --- */
 
 const updateGameboard = (screenCells, gameboard) => {
     let board = gameboard.getBoard();
@@ -80,7 +80,7 @@ const playRound = (cell, opponentGameboard, opponent, playerGameboard, player) =
     opponent.randomAttack(playerGameboard);
 }
 
-/* Reset the player and opponent gameboards */
+/* Reset the classList of the player and opponent gameboards */
 
 const resetGameboards = () => {
     let cells = document.querySelectorAll(".cell");
@@ -116,6 +116,8 @@ const startGame = () => {
 
     updateGameboard(playerCells, playerGameboard);
     updateGameboard(opponentCells, opponentGameboard);
+
+    info.textContent = "Make your shot";
 
     opponentCells.forEach((cell) => {
         cell.addEventListener("click", () => {
