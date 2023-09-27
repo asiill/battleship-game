@@ -23,6 +23,9 @@ export const Gameboard = (size) => {
         board = Array(n).fill(null).map(() => Array(n).fill(null));
         hits = Array(n).fill(false).map(() => Array(n).fill(false));
         misses = Array(n).fill(false).map(() => Array(n).fill(false));
+        for (let i = 0; i < ships.length; i++) {
+            ships[i].reset();
+        }
     };
 
     const isValidPosition = (length, direction, x, y) => {
