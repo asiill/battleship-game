@@ -81,7 +81,49 @@ body {
     gap: 10px;
 }
 
-#button-container>button {
+#start-btn {
+    font-size: var(--fs-base);
+    font-family: var(--ff-base);
+    padding: var(--padding-btn);
+}
+
+#winner-container {
+    position: fixed;
+    z-index: 1;
+    top: 20px;
+    left: 550px;
+
+    width: 250px;
+    margin: 40px auto;
+    padding: var(--padding-base);
+    border-radius: 5px;
+    background-color: lightgray;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#winner-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+.close {
+    font-size: var(--fs-base);
+    color: black;
+    float: right;
+}
+
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+#restart-btn {
     font-size: var(--fs-base);
     font-family: var(--ff-base);
     padding: var(--padding-btn);
