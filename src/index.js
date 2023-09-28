@@ -143,7 +143,6 @@ const startGame = () => {
     let player = Player("player", n);
     let opponent = Player("opponent", n);
     let game = Game(player, opponent);
-
     player.initializeGameboard();
     opponent.initializeGameboard();
 
@@ -173,5 +172,5 @@ close.addEventListener("click", () => {
 restartBtn.addEventListener("click", () => {
     winnerContainer.style.display = "none";
     content.style.opacity = 1;
-    startGame();
+    location.reload();
 });
