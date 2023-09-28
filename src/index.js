@@ -1,10 +1,18 @@
 import { Player } from "./player.js";
+import { Game } from "./game.js";
 
 /* --- Get DOM elements --- */
 
+const content = document.getElementById("content");
 const info = document.getElementById("info");
 const gameboards = document.querySelectorAll(".gameboard");
-const startBtn = document.getElementById("start");
+const startBtn = document.getElementById("start-btn");
+
+// The pop-up announcing the results of a game
+const winnerContainer = document.getElementById("winner-container");
+winnerContainer.style.display = "none";
+const close = document.querySelector(".close");
+const restartBtn = document.getElementById("restart-btn");
 
 /* --- Create a nxn grid within each gameboard --- */
 
@@ -21,6 +29,31 @@ const createGameboard = (board) => {
 gameboards.forEach((board) => {
     createGameboard(board);
 });
+
+/* -- Display the winner */
+
+const displayWinner = (winner) => {
+    let winnerName = document.getElementById("winner");
+    if (winner === "tie") {
+        winnerName.textContent = "It's a tie";
+    } else {
+        winnerName.textContent = `The ${winner} has won`;
+    }
+
+    winnerContainer.style.display = "block";
+    content.style.opacity = 0.5;
+};
+
+/* --- Check if the game is over and get the winner --- */
+
+const checkGameStatus = (game) => {
+    if (!game.isGameOver()) {
+        return;
+    } else {
+        let winner = game.getWinner();
+        displayWinner(winner);
+    }
+};
 
 /* --- Update the style of a gameboard's cells using the relevant gameboard object --- */
 
@@ -57,11 +90,11 @@ const updateGameboard = (screenCells, gameboard) => {
 
         }
     }
-}
+};
 
 /* --- Play game round --- */
 
-const playRound = (cell, opponentGameboard, opponent, playerGameboard, player) => {
+const playRound = (cell, opponentGameboard, opponent, playerGameboard, player, game) => {
     let index = cell.id;
     let x;
     let y;
@@ -78,7 +111,9 @@ const playRound = (cell, opponentGameboard, opponent, playerGameboard, player) =
 
     player.attack(x, y, opponentGameboard);
     opponent.randomAttack(playerGameboard);
-}
+
+    checkGameStatus(game);
+};
 
 /* Reset the classList of the player and opponent gameboards */
 
@@ -107,6 +142,7 @@ const startGame = () => {
 
     let player = Player("player", n);
     let opponent = Player("opponent", n);
+    let game = Game(player, opponent);
 
     player.initializeGameboard();
     opponent.initializeGameboard();
@@ -121,11 +157,21 @@ const startGame = () => {
 
     opponentCells.forEach((cell) => {
         cell.addEventListener("click", () => {
-            playRound(cell, opponentGameboard, opponent, playerGameboard, player);
+            playRound(cell, opponentGameboard, opponent, playerGameboard, player, game);
             updateGameboard(playerCells, playerGameboard);
             updateGameboard(opponentCells, opponentGameboard);
         });
     });
-}
+};
 
 startBtn.addEventListener("click", startGame);
+
+close.addEventListener("click", () => {
+    winnerContainer.style.display = "none";
+});
+
+restartBtn.addEventListener("click", () => {
+    winnerContainer.style.display = "none";
+    content.style.opacity = 1;
+    startGame();
+});
