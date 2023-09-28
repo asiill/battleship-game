@@ -135,5 +135,5 @@ export const Gameboard = (size) => {
         }
     };
 
-    return { getBoard, getHits, getMisses, initializeBoard, receiveAttack, reset };
+    return { getBoard, getHits, getMisses, initializeBoard, receiveAttack, allSunk, reset };
 };
