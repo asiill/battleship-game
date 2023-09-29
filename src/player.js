@@ -45,5 +45,5 @@ export const Player = (name, size) => {
         attack(x, y, board);
     };
 
-    return { getName, getGameboard, getAttacks, initializeGameboard, attack, randomAttack };
+    return { getName, getGameboard, getAttacks, initializeGameboard, hasAttacked, attack, randomAttack };
 };
