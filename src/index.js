@@ -34,10 +34,10 @@ gameboards.forEach((board) => {
 
 const displayWinner = (winner) => {
     let winnerName = document.getElementById("winner");
-    if (winner === "tie") {
-        winnerName.textContent = "It's a tie";
+    if (winner === "player") {
+        winnerName.textContent = `You win`;
     } else {
-        winnerName.textContent = `The ${winner} has won`;
+        winnerName.textContent = `The computer wins`;
     }
 
     winnerContainer.style.display = "block";
@@ -50,6 +50,7 @@ const checkGameStatus = (game) => {
     if (!game.isGameOver()) {
         return;
     } else {
+        info.textContent = "GAME OVER";
         let winner = game.getWinner();
         displayWinner(winner);
     }
@@ -171,10 +172,11 @@ startBtn.addEventListener("click", startGame);
 
 close.addEventListener("click", () => {
     winnerContainer.style.display = "none";
+    content.style.opacity = 1;
 });
 
 restartBtn.addEventListener("click", () => {
     winnerContainer.style.display = "none";
     content.style.opacity = 1;
-    location.reload();
+    startGame();
 });
