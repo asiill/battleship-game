@@ -109,6 +109,10 @@ const playRound = (cell, opponentGameboard, opponent, playerGameboard, player, g
         y = Number(coord[1]);
     }
 
+    if (player.hasAttacked(x, y)) {
+        return;
+    }
+
     player.attack(x, y, opponentGameboard);
     opponent.randomAttack(playerGameboard);
 
