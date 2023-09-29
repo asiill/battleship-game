@@ -109,10 +109,6 @@ const playRound = (cell, opponentGameboard, opponent, playerGameboard, player, g
         y = Number(coord[1]);
     }
 
-    if (player.hasAttacked(x, y)) {
-        return;
-    }
-
     player.attack(x, y, opponentGameboard);
     opponent.randomAttack(playerGameboard);
 
@@ -141,12 +137,15 @@ const resetGameboards = () => {
 const startGame = () => {
     resetGameboards();
 
+    info.textContent = "Make your shot";
+
     let playerCells = document.querySelectorAll("#player .cell");
     let opponentCells = document.querySelectorAll("#opponent .cell");
 
     let player = Player("player", n);
     let opponent = Player("opponent", n);
     let game = Game(player, opponent);
+
     player.initializeGameboard();
     opponent.initializeGameboard();
 
@@ -156,10 +155,11 @@ const startGame = () => {
     updateGameboard(playerCells, playerGameboard);
     updateGameboard(opponentCells, opponentGameboard);
 
-    info.textContent = "Make your shot";
-
     opponentCells.forEach((cell) => {
-        cell.addEventListener("click", () => {
+        cell.addEventListener("click", (e) => {
+            if (e.target.classList.contains("hit") || e.target.classList.contains("miss") || game.isGameOver()) {
+                return;
+            } 
             playRound(cell, opponentGameboard, opponent, playerGameboard, player, game);
             updateGameboard(playerCells, playerGameboard);
             updateGameboard(opponentCells, opponentGameboard);
