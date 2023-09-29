@@ -64,7 +64,7 @@ body {
     border: solid 1px black;
 }
 
-.active {
+#player>.active {
     background-color: blue;
 }
 
