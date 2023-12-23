@@ -5,4 +5,4 @@ A Javascript implementation of the game [Battleship](https://en.wikipedia.org/wi
 https://asiill.github.io/battleship-game/
 
 ## Screenshot
-![battleship-screenshot](https://github.com/asiill/battleship-game/assets/9745019/6b673de1-cdb0-4701-9e8a-48e33846ed81)
+![battleship-screenshot](https://github.com/asiill/battleship-game/assets/9745019/6f9b99f0-14d1-4fdb-bbb1-d33d35413be4)
