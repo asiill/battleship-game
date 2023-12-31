@@ -19,6 +19,10 @@ export const Gameboard = (size) => {
         return misses;
     };
 
+    const getShips = () => {
+        return ships;
+    };
+
     const isValidPosition = (length, direction, x, y) => {
         /* --- if x or y is out of bounds --- */
         if (x < 0 || x > n - 1 || y < 0 || y > n - 1) {
@@ -135,5 +139,5 @@ export const Gameboard = (size) => {
         }
     };
 
-    return { getBoard, getHits, getMisses, initializeBoard, receiveAttack, allSunk, reset };
+    return { getBoard, getHits, getMisses, getShips, placeShip, initializeBoard, receiveAttack, allSunk, reset };
 };
