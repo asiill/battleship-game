@@ -36,6 +36,8 @@ body {
     font-family: var(--ff-base);
 }
 
+/* --- Info container --- */
+
 #info-container {
     width: 500px;
     padding: var(--padding-base);
@@ -48,6 +50,8 @@ body {
 #info {
     font-family: var(--ff-base);
 }
+
+/* --- Gameboards --- */
 
 #gameboard-container {
     display: flex;
@@ -79,8 +83,10 @@ body {
 }
 
 .hit {
-    background-color: rgb(255, 0, 0);
+    background-color: rgb(255, 0, 0)!important;
 }
+
+/* --- Buttons --- */
 
 #button-container {
     display: flex;
@@ -113,6 +119,8 @@ body {
 #start-btn:focus, #restart-btn:focus {
     outline: 4px auto rgb(53, 57, 136);
 }
+
+/*--- Winner display container --- */
 
 #winner-container {
     position: fixed;
