@@ -1,4 +1,5 @@
 import { Player } from "./player.js";
+import { Opponent } from "./opponent.js";
 import { Game } from "./game.js";
 
 /* --- Get DOM elements --- */
@@ -30,7 +31,7 @@ gameboards.forEach((board) => {
     createGameboard(board);
 });
 
-/* -- Display the winner */
+/* --- Display the winner --- */
 
 const displayWinner = (winner) => {
     let winnerName = document.getElementById("winner");
@@ -100,7 +101,7 @@ const playRound = (cell, opponentGameboard, opponent, playerGameboard, player, g
     let x;
     let y;
 
-    // >= 0 index <= 9
+    // 0 <= index <= 9
     if (index.length === 1) {
         x = 0;
         y = Number(index);
@@ -111,12 +112,12 @@ const playRound = (cell, opponentGameboard, opponent, playerGameboard, player, g
     }
 
     player.attack(x, y, opponentGameboard);
-    opponent.randomAttack(playerGameboard);
+    opponent.targetedAttack(playerGameboard);
 
     checkGameStatus(game);
 };
 
-/* Reset the classList of the player and opponent gameboards */
+/* --- Reset the classList of the player and opponent gameboards --- */
 
 const resetGameboards = () => {
     let cells = document.querySelectorAll(".cell");
@@ -138,13 +139,13 @@ const resetGameboards = () => {
 const startGame = () => {
     resetGameboards();
 
-    info.textContent = "Make your shot";
+    info.textContent = "Make your move";
 
     let playerCells = document.querySelectorAll("#player .cell");
     let opponentCells = document.querySelectorAll("#opponent .cell");
 
-    let player = Player("player", n);
-    let opponent = Player("opponent", n);
+    let player = Player(n, "player");
+    let opponent = Opponent(n, "opponent");
     let game = Game(player, opponent);
 
     player.initializeGameboard();

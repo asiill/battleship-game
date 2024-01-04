@@ -23,20 +23,20 @@ export const Gameboard = (size) => {
         return ships;
     };
 
-    const isValidPosition = (length, direction, x, y) => {
+    const isValidPosition = (length, axis, x, y) => {
         /* --- if x or y is out of bounds --- */
         if (x < 0 || x > n - 1 || y < 0 || y > n - 1) {
             return false;
         }
 
         /* --- if the ship will be of out bounds --- */
-        // --- direction is horizontal --- //
-        if (direction === 1) {
+        // --- x-axis --- //
+        if (axis === 1) {
             if (x + length > n) {
                 return false;
             }
         }
-        // --- direction is vertical --- //
+        // --- y-axis --- //
         else {
             if (y + length > n) {
                 return false;
@@ -44,8 +44,8 @@ export const Gameboard = (size) => {
         }
 
         /* --- if the position or the neighbouring positions are occupied --- */
-        // --- horizontal --- //
-        if (direction === 1) {
+        // --- x-axis --- //
+        if (axis === 1) {
             for (let i = -1; i <= length; i++) {
                 for (let j = -1; j <= 1; j++) {
                     if ((x + i < 0) || (x + i > n - 1) || (y + j < 0) || (y + j > n - 1)) {
@@ -57,7 +57,7 @@ export const Gameboard = (size) => {
                 }
             }
         }
-        // --- vertical --- //
+        // --- y-axis --- //
         else {
             for (let i = - 1; i <= length; i++) {
                 for (let j = -1; j <= 1; j++) {
@@ -73,18 +73,18 @@ export const Gameboard = (size) => {
         return true;
     };
 
-    const placeShip = (ship, direction, x, y) => {
+    const placeShip = (ship, axis, x, y) => {
         let length = ship.getLength();
-        if (!isValidPosition(length, direction, x, y)) {
+        if (!isValidPosition(length, axis, x, y)) {
             return false;
         }
-        // if direction is horizontal
-        if (direction === 1) {
+        // if ship is placed horizontally
+        if (axis === 1) {
             for (let i = 0; i < length; i++) {
                 board[x + i][y] = ship;
             }
         }
-        // else if direction is vertical
+        // else if ship is placed vertically
         else {
             for (let i = 0; i < length; i++) {
                 board[x][y + i] = ship;
@@ -98,10 +98,10 @@ export const Gameboard = (size) => {
         while (i < 5) {
             let ship = ships[i];
             // 1 is horizontal | 0 is vertical
-            let direction = Math.random() < 0.5 ? 1 : 0;
-            let x = Math.floor(Math.random() * 10);
-            let y = Math.floor(Math.random() * 10);
-            if (placeShip(ship, direction, x, y)) {
+            let axis = Math.random() < 0.5 ? 1 : 0;
+            let x = Math.floor(Math.random() * n);
+            let y = Math.floor(Math.random() * n);
+            if (placeShip(ship, axis, x, y)) {
                 i++;
             }
         }
@@ -114,9 +114,11 @@ export const Gameboard = (size) => {
         if (board[x][y]) {
             board[x][y].hit();
             hits[x][y] = true;
+            return "hit";
         }
         else {
             misses[x][y] = true;
+            return "miss";
         }
     };
 

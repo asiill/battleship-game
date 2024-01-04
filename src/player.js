@@ -1,6 +1,6 @@
 import { Gameboard } from "./gameboard.js";
 
-export const Player = (name, size) => {
+export const Player = (size, name) => {
     let n = size;
     let playerName = name;
     let gameboard = Gameboard(n);
@@ -38,12 +38,6 @@ export const Player = (name, size) => {
         attacks.push([x, y]);
         board.receiveAttack(x, y);
     };
-    
-    const randomAttack = (board) => {
-        let x = Math.floor(Math.random() * 10);
-        let y = Math.floor(Math.random() * 10);
-        attack(x, y, board);
-    };
 
-    return { getName, getGameboard, getAttacks, initializeGameboard, attack, randomAttack, };
+    return { getName, getGameboard, getAttacks, initializeGameboard, attack };
 };
