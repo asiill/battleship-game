@@ -7,7 +7,8 @@ export const Opponent = (size, name) => {
     let attacks = [];
 
     // Coordinates of the most recent hit
-    let lastHit = null; 
+    let lastHit = null;
+    let potentialTargets = [];
 
     const getName = () => {
         return opponentName;
@@ -70,11 +71,23 @@ export const Opponent = (size, name) => {
         const horizontal = [
             { x: lastHit.x + 1, y: lastHit.y },
             { x: lastHit.x - 1, y: lastHit.y },
+            { x: lastHit.x + 2, y: lastHit.y },
+            { x: lastHit.x - 2, y: lastHit.y },
+            { x: lastHit.x + 3, y: lastHit.y },
+            { x: lastHit.x - 3, y: lastHit.y },
+            { x: lastHit.x + 4, y: lastHit.y },
+            { x: lastHit.x - 4, y: lastHit.y },
         ];
 
         const vertical = [
             { x: lastHit.x, y: lastHit.y + 1 },
             { x: lastHit.x, y: lastHit.y - 1 },
+            { x: lastHit.x, y: lastHit.y + 2 },
+            { x: lastHit.x, y: lastHit.y - 2 },
+            { x: lastHit.x, y: lastHit.y + 3 },
+            { x: lastHit.x, y: lastHit.y - 3 },
+            { x: lastHit.x, y: lastHit.y + 4 },
+            { x: lastHit.x, y: lastHit.y - 4 },
         ];
 
         if (axis === 1) {
@@ -83,6 +96,7 @@ export const Opponent = (size, name) => {
                     return {x: coord.x, y: coord.y};
                 }
             }
+
         } else {
             for (const coord of vertical) {
                 if (isValidTargetedAttack(coord.x, coord.y)) {
@@ -133,7 +147,21 @@ export const Opponent = (size, name) => {
         return axis;
     };
 
+    const updatePotentialTargets = (board) => {
+        let ships = board.getShips();
+        for (let i = 0; i < ships.length; i++) {
+            let ship = ships[i];
+            if (!ship.isSunk()) {
+                potentialTargets.push(ship);
+            }
+        }
+    };
+
     const targetedAttack = (board) => {
+        potentialTargets = [];
+        updatePotentialTargets(board);
+        console.log(potentialTargets);
+
         // If a previous round resulted in a "hit"
         if (lastHit) {
             let { x, y } = lastHit;
