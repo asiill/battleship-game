@@ -157,15 +157,17 @@ const startGame = () => {
     updateGameboard(playerCells, playerGameboard);
     updateGameboard(opponentCells, opponentGameboard);
 
+    const handleClick = (e) => {
+        if (e.target.classList.contains("hit") || e.target.classList.contains("miss") || game.isGameOver()) {
+            return;
+        } 
+        playRound(e.target, opponentGameboard, opponent, playerGameboard, player, game);
+        updateGameboard(playerCells, playerGameboard);
+        updateGameboard(opponentCells, opponentGameboard);
+    };
+
     opponentCells.forEach((cell) => {
-        cell.addEventListener("click", (e) => {
-            if (e.target.classList.contains("hit") || e.target.classList.contains("miss") || game.isGameOver()) {
-                return;
-            } 
-            playRound(cell, opponentGameboard, opponent, playerGameboard, player, game);
-            updateGameboard(playerCells, playerGameboard);
-            updateGameboard(opponentCells, opponentGameboard);
-        });
+        cell.addEventListener("click", handleClick);
     });
 };
 
