@@ -8,7 +8,6 @@ export const Opponent = (size, name) => {
 
     // Coordinates of the most recent hit
     let lastHit = null;
-    let potentialTargets = [];
 
     const getName = () => {
         return opponentName;
@@ -147,21 +146,7 @@ export const Opponent = (size, name) => {
         return axis;
     };
 
-    const updatePotentialTargets = (board) => {
-        let ships = board.getShips();
-        for (let i = 0; i < ships.length; i++) {
-            let ship = ships[i];
-            if (!ship.isSunk()) {
-                potentialTargets.push(ship);
-            }
-        }
-    };
-
     const targetedAttack = (board) => {
-        potentialTargets = [];
-        updatePotentialTargets(board);
-        console.log(potentialTargets);
-
         // If a previous round resulted in a "hit"
         if (lastHit) {
             let { x, y } = lastHit;
