@@ -6,7 +6,7 @@ describe ("Player", () => {
     let testOpponentBoard;
 
     beforeEach(() => {
-        testPlayer = Player("player", 10);
+        testPlayer = Player(10, "player");
         testOpponentBoard = Gameboard(10);
     });
 

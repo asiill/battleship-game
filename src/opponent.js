@@ -169,5 +169,5 @@ export const Opponent = (size, name) => {
         }
     };
 
-    return { getName, getGameboard, getAttacks, initializeGameboard, attack, targetedAttack, };
+    return { getName, getGameboard, getAttacks, initializeGameboard, attack, isValidTargetedAttack, targetedAttack, };
 };
