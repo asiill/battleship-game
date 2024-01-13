@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap)";
 
 :root {
     /* base font family */
@@ -39,7 +39,6 @@ body {
 /* --- Info container --- */
 
 #info-container {
-    width: 500px;
     padding: var(--padding-base);
     border-radius: 5px;
 
@@ -55,6 +54,8 @@ body {
 
 #gameboard-container {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 20px;
 }
 
