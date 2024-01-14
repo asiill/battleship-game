@@ -134,7 +134,7 @@ body {
     margin: 40px auto;
     padding: var(--padding-base);
     border-radius: 5px;
-    background-color: rgb(197, 222, 221);
+    background-color: lightgrey;
 
     display: flex;
     flex-direction: column;
@@ -144,16 +144,16 @@ body {
 #winner-content {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     gap: 40px;
 }
 
 .close {
-    float: right;
     border-radius: 50%;
     background-color: rgb(197, 222, 221);
     cursor: pointer;
-
+    float: right;
     display: flex;
     justify-content: center;
     align-items: center;
