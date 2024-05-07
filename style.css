@@ -171,3 +171,21 @@ img {
     width: 20px;
     height: 20px;
 }
+
+footer {
+    text-align: center;
+    font-size: var(--fs-base);
+    font-family: var(--ff-base);
+    padding: 1rem;
+    background-color: rgb(226, 225, 221);
+}
+
+a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+
+a:hover {
+    color: rgb(0, 139, 139);
+}
