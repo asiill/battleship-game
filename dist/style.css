@@ -24,8 +24,7 @@ body {
 }
 
 #content {
-    margin: 40px auto;
-
+    margin: 40px auto 150px auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -181,7 +180,7 @@ footer {
     left: 0;
     bottom: 0;
     width: 100%;
-    padding: 1rem;
+    padding: 0.5rem;
     text-align: center;
     font-size: var(--fs-base);
     font-family: var(--ff-base);
