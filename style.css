@@ -173,6 +173,10 @@ img {
 }
 
 footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
     position: fixed;
     left: 0;
     bottom: 0;
@@ -181,15 +185,10 @@ footer {
     text-align: center;
     font-size: var(--fs-base);
     font-family: var(--ff-base);
-    background-color: rgb(226, 225, 221);
+    background-color: rgb(230, 228, 221);
 }
 
-a {
-    text-decoration: none;
-    color: rgb(0, 0, 0);
-    font-weight: bold;
-}
-
-a:hover {
-    color: rgb(0, 139, 139);
+footer svg {
+    width: 20px;
+    height: 20px;
 }
