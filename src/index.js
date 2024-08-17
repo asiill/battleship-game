@@ -113,7 +113,7 @@ const playRound = (cell, opponentGameboard, opponent, playerGameboard, player, g
 
     player.attack(x, y, opponentGameboard);
     opponent.targetedAttack(playerGameboard);
-
+    
     checkGameStatus(game);
 };
 
@@ -139,7 +139,8 @@ const resetGameboards = () => {
 const startGame = () => {
     resetGameboards();
 
-    info.textContent = "Make your move";
+    info.textContent = "";
+    startBtn.style.display = "none";
 
     let playerCells = document.querySelectorAll("#player .cell");
     let opponentCells = document.querySelectorAll("#opponent .cell");
