@@ -21,6 +21,7 @@
 body {
     height: 100vh;
     background-color: rgb(240, 239, 235);
+    overflow: scroll;
 }
 
 #content {
@@ -31,7 +32,7 @@ body {
     gap: 20px;
 }
 
-#header {
+header {
     font-family: var(--ff-base);
 }
 
@@ -129,30 +130,25 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
 
-    width: 250px;
     margin: 40px auto;
     padding: var(--padding-base);
     border-radius: 5px;
     background-color: lightgrey;
-
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
 }
 
-#winner-content {
+#winner-container>div {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 40px;
+    gap: 20px;
 }
 
 .close {
     border-radius: 50%;
     background-color: rgb(197, 222, 221);
     cursor: pointer;
-    float: right;
+    align-self: flex-end;
     display: flex;
     justify-content: center;
     align-items: center;
