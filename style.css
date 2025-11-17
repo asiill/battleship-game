@@ -25,7 +25,8 @@ body {
 }
 
 #content {
-    margin: 40px auto 150px auto;
+    margin: 40px auto;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -163,27 +164,6 @@ header {
 }
 
 img {
-    width: 20px;
-    height: 20px;
-}
-
-footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    padding: 0.5rem;
-    text-align: center;
-    font-size: var(--fs-base);
-    font-family: var(--ff-base);
-    background-color: rgb(230, 228, 221);
-}
-
-footer svg {
     width: 20px;
     height: 20px;
 }
